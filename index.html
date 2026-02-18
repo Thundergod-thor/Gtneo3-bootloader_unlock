@@ -20,6 +20,7 @@ body {
   background: #020409;
   color: #e6f1ff;
   font-family: Consolas, monospace;
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
@@ -118,6 +119,53 @@ footer {
   padding: 40px;
   color: #6c7a89;
 }
+
+/* ===== MOBILE RESPONSIVE PATCH ===== */
+@media (max-width: 768px) {
+
+  header {
+    padding: 60px 15px 30px;
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 20px 15px;
+  }
+
+  .download {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .card {
+    padding: 18px;
+    margin: 18px 0;
+  }
+
+  img {
+    margin-top: 12px;
+  }
+
+  pre {
+    font-size: 13px;
+  }
+
+  footer {
+    padding: 25px 15px;
+    font-size: 13px;
+  }
+}
 </style>
 </head>
 
@@ -126,24 +174,21 @@ footer {
 <canvas id="matrix"></canvas>
 
 <header>
-  <h1>GT NEO 3 BOOTLOADER UNLOCK[UNOFFICIAL]</h1>
+  <h1>GT NEO 3 BOOTLOADER UNLOCK [UNOFFICIAL]</h1>
   <p class="subtitle">ENG Preloader Exploit • Fastboot Unlock</p>
 
-  <!-- DOWNLOAD BUTTON -->
   <a href="https://drive.google.com/file/d/1XdtfVHOdwJ0Ue3DSAXPUf4bRq-StM9WM/view?usp=drive_link"
-   class="download"
-   target="_blank"
-   rel="noopener">
-   ⬇ DOWNLOAD TOOL (ZIP)
-</a>
+     class="download"
+     target="_blank"
+     rel="noopener">
+     ⬇ DOWNLOAD TOOL (ZIP)
+  </a>
 </header>
 
 <div class="container">
 
-  <!-- REQUIREMENTS -->
   <div class="card">
     <h2>⚠️ REQUIRED CONDITIONS</h2>
-
     <div class="req">✔ Latest Realme UI 5</div>
     <div class="req">✔ Active Slot must be SLOT A</div>
 
@@ -152,7 +197,6 @@ footer {
     </div>
   </div>
 
-  <!-- SLOT CHECK -->
   <div class="card">
     <h2>📱 CHECK ACTIVE SLOT</h2>
 
@@ -163,12 +207,15 @@ footer {
 
     <h3>❌ SLOT B (Do NOT proceed)</h3>
     <p>Local install latest RUI 5 package and check active slot again</p>
+
     <p>Download RUI 5 OTA packages:<br>
-    <a href="https://docs.google.com/document/u/0/d/1zzIi3n2aXDRSGKynhFYw5_uUAlCFZ5aVYCzIfk0Z-BU/mobilebasic?pli=1" target="_blank">
-    ➡ Download latest package available as per your model !
-    </a><br>
-      
-  <!-- STEPS -->
+      <a href="https://docs.google.com/document/u/0/d/1zzIi3n2aXDRSGKynhFYw5_uUAlCFZ5aVYCzIfk0Z-BU/mobilebasic?pli=1"
+         target="_blank">
+         ➡ Download latest package available as per your model !
+      </a>
+    </p>
+  </div>
+
   <div class="card">
     <h2>STEP 1 — INSTALL DRIVERS</h2>
     <p>Run PenumbraDrivers.exe → select libusb → install → reboot PC.</p>
@@ -182,7 +229,6 @@ footer {
   <div class="card">
     <h2>STEP 3 — FLASH ENG PRELOADER</h2>
     <p>Power OFF → run unlockbt1.bat → connect device.</p>
-
     <img src="images/preloader_flash.jpg">
     <pre>ENG PRELOADER FLASHING COMPLETE</pre>
     <p>If device boots into recovery mode format and reboot</p>
@@ -200,7 +246,6 @@ footer {
   <div class="card">
     <h2>STEP 5 — UNLOCK BOOTLOADER</h2>
     <p>Run unlockbt2.bat and confirm on device.</p>
-
     <img src="images/unlock_success.png">
     <pre>unlocked: yes</pre>
   </div>
@@ -208,15 +253,11 @@ footer {
 </div>
 
 <footer>
-Unofficial Tool • Use at your own risk
-<footer>  
-Big thanks to Shomy for penumbra 
-<footer>  
-Also @anandthetrickortreat — for proper guidance and shared experience
-<footer>  
-@Synguyen00 @NorvalBlast @Santhosh — for testing,sharing & verifying outcomes and feedbacks
-<footer>
-Author : Thundergod_thor
+  <p>Unofficial Tool • Use at your own risk</p>
+  <p>Big thanks to Shomy for Penumbra</p>
+  <p>@anandthetrickortreat — guidance & shared experience</p>
+  <p>@Synguyen00 @NorvalBlast @Santhosh — testing & feedback</p>
+  <p>Author : Thundergod_thor</p>
 </footer>
 
 <script>
@@ -224,13 +265,18 @@ Author : Thundergod_thor
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+function resizeCanvas() {
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 const chars = "01";
 const fontSize = 16;
-const columns = canvas.width / fontSize;
-const drops = Array.from({ length: columns }).fill(1);
+let columns = canvas.width / fontSize;
+let drops = Array.from({ length: columns }).fill(1);
 
 function draw() {
   ctx.fillStyle = "rgba(0,0,0,0.08)";
