@@ -120,6 +120,34 @@ footer {
   color: #6c7a89;
 }
 
+/* ===== TELEGRAM FLOAT BUTTON ===== */
+.tg-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #229ED9;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 18px #229ED9;
+  z-index: 9999;
+  transition: 0.2s;
+}
+
+.tg-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 28px #229ED9;
+}
+
+.tg-float svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
 /* ===== MOBILE RESPONSIVE PATCH ===== */
 @media (max-width: 768px) {
 
@@ -165,6 +193,13 @@ footer {
     padding: 25px 15px;
     font-size: 13px;
   }
+
+  .tg-float {
+    width: 52px;
+    height: 52px;
+    bottom: 16px;
+    right: 16px;
+  }
 }
 </style>
 </head>
@@ -191,15 +226,11 @@ footer {
     <h2>⚠️ REQUIRED CONDITIONS</h2>
     <div class="req">✔ Latest Realme UI 5</div>
     <div class="req">✔ Active Slot must be SLOT A</div>
-
-    <div class="warning">
-      Using Slot B or older firmware may brick the device.
-    </div>
+    <div class="warning">Using Slot B or older firmware may brick the device.</div>
   </div>
 
   <div class="card">
     <h2>📱 CHECK ACTIVE SLOT</h2>
-
     <p>Use DevCheck App → System → Active Slot</p>
 
     <h3>✔ SLOT A (Required)</h3>
@@ -259,6 +290,17 @@ footer {
   <p>@Synguyen00 @NorvalBlast @Santhosh — testing & feedback</p>
   <p>Author : Thundergod_thor</p>
 </footer>
+
+<!-- TELEGRAM SUPPORT BUTTON -->
+<a href="https://t.me/RealmeGTNeo3discussion"
+   class="tg-float"
+   target="_blank"
+   rel="noopener"
+   title="Telegram Support">
+  <svg viewBox="0 0 24 24">
+    <path d="M9.04 15.47l-.39 5.49c.56 0 .81-.24 1.11-.53l2.67-2.56 5.53 4.05c1.01.56 1.73.27 2-.93l3.63-17.01h.01c.32-1.5-.54-2.09-1.52-1.72L1.28 9.1c-1.46.56-1.44 1.38-.25 1.74l5.8 1.81L19.5 6.2c.6-.37 1.15-.17.7.2"/>
+  </svg>
+</a>
 
 <script>
 /* ===== MATRIX RAIN ===== */
