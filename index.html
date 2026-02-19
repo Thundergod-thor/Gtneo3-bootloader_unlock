@@ -6,6 +6,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+/* ===== BLACK LOADER ===== */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ff9c;
+  font-family: Consolas, monospace;
+  font-size: 22px;
+  z-index: 999999;
+}
+
+.loading::after {
+  content: "";
+  animation: dots 1.5s infinite steps(4);
+}
+
+@keyframes dots {
+  0% { content: ""; }
+  25% { content: "."; }
+  50% { content: ".."; }
+  75% { content: "..."; }
+  100% { content: ""; }
+}
+
+.fade-out {
+  animation: fadeOut 0.8s forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
 /* ===== MATRIX BACKGROUND ===== */
 canvas {
   position: fixed;
@@ -151,22 +186,13 @@ footer {
 /* ===== MOBILE RESPONSIVE PATCH ===== */
 @media (max-width: 768px) {
 
-  header {
-    padding: 60px 15px 30px;
-  }
+  header { padding: 60px 15px 30px; }
 
-  h1 {
-    font-size: 28px;
-    line-height: 1.2;
-  }
+  h1 { font-size: 28px; line-height: 1.2; }
 
-  .subtitle {
-    font-size: 14px;
-  }
+  .subtitle { font-size: 14px; }
 
-  .container {
-    padding: 20px 15px;
-  }
+  .container { padding: 20px 15px; }
 
   .download {
     display: block;
@@ -176,23 +202,13 @@ footer {
     font-size: 16px;
   }
 
-  .card {
-    padding: 18px;
-    margin: 18px 0;
-  }
+  .card { padding: 18px; margin: 18px 0; }
 
-  img {
-    margin-top: 12px;
-  }
+  img { margin-top: 12px; }
 
-  pre {
-    font-size: 13px;
-  }
+  pre { font-size: 13px; }
 
-  footer {
-    padding: 25px 15px;
-    font-size: 13px;
-  }
+  footer { padding: 25px 15px; font-size: 13px; }
 
   .tg-float {
     width: 52px;
@@ -205,6 +221,11 @@ footer {
 </head>
 
 <body>
+
+<!-- ===== LOADING OVERLAY ===== -->
+<div id="loader">
+  <div class="loading">Loading</div>
+</div>
 
 <canvas id="matrix"></canvas>
 
@@ -221,6 +242,8 @@ footer {
 </header>
 
 <div class="container">
+
+  <!-- (ALL YOUR CONTENT — UNCHANGED) -->
 
   <div class="card">
     <h2>⚠️ REQUIRED CONDITIONS</h2>
@@ -291,7 +314,7 @@ footer {
   <p>Author : Thundergod_thor</p>
 </footer>
 
-<!-- TELEGRAM SUPPORT BUTTON -->
+<!-- TELEGRAM BUTTON -->
 <a href="https://t.me/RealmeGTNeo3discussion"
    class="tg-float"
    target="_blank"
@@ -303,6 +326,13 @@ footer {
 </a>
 
 <script>
+/* ===== LOADER FADE ===== */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("loader").classList.add("fade-out");
+  }, 900);
+});
+
 /* ===== MATRIX RAIN ===== */
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
